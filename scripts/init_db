@@ -1,0 +1,38 @@
+/*
+===============================================================================
+Create Database and Schemas 
+
+===============================================================================
+Script Purpose:
+    This script drops the 'dw_project' database if it exists (terminating
+    all active connections) and recreates it clean.
+
+WARNING:
+    Running this script will drop the entire 'dw_project' database if it exists.
+    All data in the database will be permanently deleted.
+===============================================================================
+*/
+
+-- 1. Encerra conexões ativas e apaga o banco de dados se ele existir
+
+
+DROP DATABASE IF EXISTS dw_project WITH (FORCE);
+
+-- 2. Cria o novo banco de dados limpo
+CREATE DATABASE dw_project;
+
+ -- Now connect to the new database.
+
+/*
+===============================================================================
+Create Medallion Schemas
+===============================================================================
+Script Purpose:
+    Sets up the three Medallion Architecture schemas inside 'dw_project'.
+===============================================================================
+*/
+
+-- Criação dos Esquemas Medallion
+CREATE SCHEMA IF NOT EXISTS bronze;
+CREATE SCHEMA IF NOT EXISTS silver;
+CREATE SCHEMA IF NOT EXISTS gold;
