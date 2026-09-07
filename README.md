@@ -54,6 +54,7 @@ Desenvolver análises baseadas em SQL para entregar insights detalhados sobre:
 Esses insights capacitam as áreas de negócio com métricas-chave, permitindo decisões estratégicas.
 
 ## 📂 Estrutura do Repositório
+``
 data-warehouse-project/
 │
 ├── datasets/                           # Datasets brutos usados no projeto (dados de ERP e CRM)
@@ -95,3 +96,4 @@ data-warehouse-project/
 ├── README.md                           # Visão geral do projeto e instruções
 ├── LICENSE                             # Informações de licença do repositório
 └── .gitignore                          # Arquivos e pastas ignorados pelo Git
+```
