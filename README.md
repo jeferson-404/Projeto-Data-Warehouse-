@@ -54,25 +54,44 @@ Desenvolver análises baseadas em SQL para entregar insights detalhados sobre:
 Esses insights capacitam as áreas de negócio com métricas-chave, permitindo decisões estratégicas.
 
 ## 📂 Estrutura do Repositório
-```
 data-warehouse-project/
 │
 ├── datasets/                           # Datasets brutos usados no projeto (dados de ERP e CRM)
+│   ├── source_crm/
+│   │   ├── cust_info.csv
+│   │   ├── prd_info.csv
+│   │   └── sales_details.csv
+│   └── source_erp/
+│       ├── cust_az12.csv
+│       ├── loc_a101.csv
+│       └── px_cat_g1v2.csv
 │
 ├── docs/                               # Documentação do projeto e detalhes da arquitetura
 │   ├── data_architecture.png           # Arquivo mostrando a arquitetura do projeto
 │   ├── data_catalog.md                 # Catálogo dos datasets, com descrição dos campos e metadados
-│   ├── data_flow.png                   # Arquivodo diagrama de fluxo de dados
-│   ├── naming-conventions.md           # Diretrizes de nomenclatura para tabelas, colunas e arquivos
+│   ├── data_flow.png                   # Diagrama de fluxo de dados
+│   └── naming-conventions.md           # Diretrizes de nomenclatura para tabelas, colunas e arquivos
 │
 ├── scripts/                            # Scripts SQL (PostgreSQL / plpgsql) para ETL e transformações
-│   ├── bronze/                         # Scripts para extração e carga dos dados brutos (ddl_bronze, load_bronze)
-│   ├── silver/                         # Scripts para limpeza e transformação dos dados (ddl_silver, load_silver)
-│   ├── gold/                           # Scripts para criação das views analíticas (gold_views)
+│   ├── bronze/
+│   │   ├── ddl_bronze.sql              # Criação das tabelas Bronze
+│   │   └── load_bronze.sql             # Stored Procedure para carga dos dados
+│   ├── silver/
+│   │   ├── ddl_silver.sql              # Criação das tabelas Silver
+│   │   └── load_silver.sql             # Stored Procedure para transformação e limpeza
+│   ├── gold/
+│   │   └── fact_sales.sql              # Criação das views analíticas (Star Schema)
+│   └── analytics/                      # Scripts de análise (01 a 13)
+│       ├── 01_database_exploration.sql
+│       ├── 02_dimensions_exploration.sql
+│       ├── ...
+│       ├── 12_report_customers.sql
+│       └── 13_report_products.sql
 │
-├── tests/                              # Scripts de verificação de qualidade dos dados (quality_checks_silver, quality_checks_gold)
+├── tests/                              # Scripts de verificação de qualidade dos dados
+│   ├── quality_checks_silver.sql
+│   └── quality_checks_gold.sql
 │
 ├── README.md                           # Visão geral do projeto e instruções
 ├── LICENSE                             # Informações de licença do repositório
-├── .gitignore                          # Arquivos e pastas ignorados pelo Git
-```
+└── .gitignore                          # Arquivos e pastas ignorados pelo Git
